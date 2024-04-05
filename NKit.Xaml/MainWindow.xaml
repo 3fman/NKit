@@ -1,0 +1,68 @@
+﻿<Window x:Class="NKit.Xaml.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cali="http://caliburnmicro.com"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:local="clr-namespace:NKit.Xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        mc:Ignorable="d">
+    <StackPanel Name="Grid">
+        <Button Content="PrintSum">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <local:CallMethodAction MethodName="PrintSum" TargetObject="{Binding}">
+                        <local:Parameter>
+                            <local:Parameter.Value>
+                                <system:Int32>1</system:Int32>
+                            </local:Parameter.Value>
+                        </local:Parameter>
+                        <local:Parameter>
+                            <local:Parameter.Value>
+                                <system:Int32>2</system:Int32>
+                            </local:Parameter.Value>
+                        </local:Parameter>
+                    </local:CallMethodAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        <Button Content="关闭窗口">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <local:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        <Button Name="Button" Content="科目二">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseMove">
+                    <local:CallMethodAction MethodName="RecordMousePoint"
+                                            PassTriggerArgsToMethod="True"
+                                            TargetObject="{Binding}"
+                                            TriggerArgsConverterParameter="{x:Reference Button}">
+                        <local:CallMethodAction.TriggerArgsConverter>
+                            <local:MouseEventArgsConverter />
+                        </local:CallMethodAction.TriggerArgsConverter>
+                    </local:CallMethodAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        <Button>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <local:CallMethodAction MethodName="Test" TargetObject="{Binding}">
+                        <local:Parameter>
+                            <local:Parameter.Value>
+                                <system:Int32>1</system:Int32>
+                            </local:Parameter.Value>
+                        </local:Parameter>
+                    </local:CallMethodAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+    </StackPanel>
+</Window>
