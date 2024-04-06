@@ -10,11 +10,11 @@
 
 `TriggerArgsConverter`: 对Trigger传递过来的参数进行转换。`PassTriggerArgsToMethod = True`时有效。
 
-`TriggerArgsConverterParameter`: `TriggerArgsConverter`的第3个参数的实参。`PassTriggerArgsToMethod = True`时有效。
+`TriggerArgsConverterParameter`: `TriggerArgsConverter`的第3个参数的实参。`PassTriggerArgsToMethod=True`时有效。
 
 `Parameters`: 当`PassTriggerArgsToMethod`是false时，`Parameters`会作为`MethodName`的参数。注意：MethodName的参数列表必须与`Parameters`数量，类型，顺序完全匹配，否则抛出异常`Missed method xxx`。
 
-> 代码示例1：实时追踪记录，鼠标在按钮中的位置。
+> Sample1：实时追踪记录，鼠标在按钮中的位置。
 
 ```xml
 <Button Name="Button" Content="实时追踪鼠标的位置">
@@ -34,7 +34,7 @@
 ```
 
 ```c#
-public class MainViewModel
+public class ViewModel
 {
     public void RecordMousePoint(Point point)
     {
@@ -57,7 +57,7 @@ public class MouseEventArgsConverter : IValueConverter
 }
 ```
 
-> 代码示例2：关闭窗口
+> Sample2：关闭窗口
 
 ```xml
 <Button Content="关闭窗口">
@@ -69,7 +69,7 @@ public class MouseEventArgsConverter : IValueConverter
 </Button>
 ```
 
-> 代码示例：调用ViewModel中的PrintSum()并指定参数
+> Sample3：调用ViewModel中的PrintSum()并指定参数
 
 ```xml
 <Button Content="PrintSum">
@@ -93,7 +93,7 @@ public class MouseEventArgsConverter : IValueConverter
 ```
 
 ```c#
-public class MainViewModel
+public class ViewModel
 {
     public void PrintSum(int a, int b)
     {
